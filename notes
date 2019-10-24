@@ -1,0 +1,8 @@
+The streaming API uses the following heuristic to determine whether a given Tweet falls within a bounding box:
+
+If the coordinates field is populated, the values there will be tested against the bounding box. Note that this field uses geoJSON order (longitude, latitude).
+If coordinates is empty but place is populated, the region defined in place is checked for intersection against the locations bounding box. Any overlap will match.
+If none of the rules listed above match, the Tweet does not match the location query. Note that the geo field is deprecated, and ignored by the streaming API.
+If you would like to exclude place matches or only include places which fall completely within the bounding box, your code will have to perform an additional filtering step after reading the filtered stream.
+
+
